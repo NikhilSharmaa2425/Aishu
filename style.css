@@ -18,13 +18,12 @@ body {
   background-image: url("https://i0.wp.com/textures.world/wp-content/uploads/2018/10/2-Millimeter-Paper-Background-copy.jpg?ssl=1");
   background-size: 500px;
   background-position: center center;
-  padding: 20px 100px;
-/*  min-width: 800px; */
-  
+  padding: 20px 40px; /* Reduced side padding for mobile */
   transform: rotateZ(-5deg);
   box-shadow: 1px 15px 20px 0px rgba(0,0,0,0.5);
-  
   position: absolute;
+  user-select: none;
+  touch-action: none; /* Crucial: stops the browser from scrolling while dragging */
 }
 
 .paper.heart {
@@ -43,9 +42,10 @@ body {
 }
 
 img {
-  max-height: 200px;
-  width: 100%;
+  max-width: 100%;
+  height: auto; /* Keeps the photo from looking stretched */
   user-select: none;
+  pointer-events: none;
 }
 
 .paper.heart::after {
@@ -70,4 +70,21 @@ p {
   user-select: none;
   
    /* filter: drop-shadow(2px 1.5px 1px rgba(0,0,105,0.9)); */
+
+}
+
+
+@media (max-width: 600px) {
+  .paper {
+    width: 80vw; /* Takes up 80% of screen width */
+    padding: 15px;
+  }
+  
+  p {
+    font-size: 30px; /* Smaller text for smaller screens */
+  }
+
+  .paper.image p {
+    font-size: 22px;
+  }
 }
